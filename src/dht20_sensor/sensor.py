@@ -59,9 +59,13 @@ class DHT20Sensor:
     def _extract_temperature(self, data: list) -> float:
         raw_temperature = ((data[3] & 0xF) << 16) + (data[4] << 8) + data[5]
 
-        return 200 * (float(raw_temperature) / (2 ** 20)) - 50
+        calculated_temperature = 200 * (float(raw_temperature) / (2**20)) - 50
+
+        return round(calculated_temperature, 1)
 
     def _extract_humidity(self, data: list) -> float:
         raw_humidity = (data[1] << 12) + (data[2] << 4) + ((data[3] & 0xF0) >> 4)
 
-        return 100 * (float(raw_humidity) / (2 ** 20))
+        calculated_humidity = 100 * (float(raw_humidity) / (2**20))
+
+        return round(calculated_humidity, 1)
