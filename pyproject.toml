@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dht20_sensor"
+version = "0.0.1"
+authors = [
+  { name="Kieran Porter", email="kieranintehdas@gmail.com" },
+]
+description = "A minimal implementation for taking temperature and humidity readings with the DHT20 sensor"
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.7"
+dependencies = [
+    "smbus2",
+]
