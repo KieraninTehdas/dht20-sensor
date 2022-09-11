@@ -4,14 +4,22 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dht20_sensor"
-version = "0.0.1"
+version = "0.0.2"
 authors = [
   { name="Kieran Porter", email="kieranintehdas@gmail.com" },
 ]
 description = "A minimal implementation for taking temperature and humidity readings with the DHT20 sensor"
 readme = "README.md"
-license = { file="LICENSE" }
+license = { "text"="GPL-3.0-or-later" }
 requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Operating System :: OS Independent",
+]
 dependencies = [
     "smbus2",
 ]
+
+[project.urls]
+"Homepage" = "https://github.com/KieraninTehdas/dht20-sensor"
