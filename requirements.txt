@@ -1,10 +1,12 @@
 attrs==22.1.0
 black==22.8.0
 click==8.1.3
+-e git+https://github.com/KieraninTehdas/dht20-sensor.git@42885b64b1c045b9eefbfdb2af313ca66ad5597d#egg=dht20_sensor
 iniconfig==1.1.1
 mypy-extensions==0.4.3
 packaging==21.3
 pathspec==0.10.1
+pkg_resources==0.0.0
 platformdirs==2.5.2
 pluggy==1.0.0
 py==1.11.0
@@ -12,4 +14,4 @@ pyparsing==3.0.9
 pytest==7.1.3
 smbus2==0.4.2
 tomli==2.0.1
-typing-extensions==4.3.0
+typing_extensions==4.3.0

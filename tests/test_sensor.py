@@ -3,10 +3,10 @@ from datetime import datetime
 
 import pytest
 
-from src.dht20_sensor.sensor import DHT20Sensor, InitialisationError
+from dht20_sensor.sensor import DHT20Sensor, InitialisationError
 
 
-@mock.patch("src.dht20_sensor.sensor.SMBus", autospec=True)
+@mock.patch("dht20_sensor.sensor.SMBus", autospec=True)
 class TestSensor:
     valid_data = [0x1C, 0xBA, 0xC8, 0x5, 0xCC, 0xE3, 0x28]
 
@@ -29,7 +29,7 @@ class TestSensor:
         assert temperature.value == 22.5
         assert humidity.value == 73.0
 
-    @mock.patch("src.dht20_sensor.sensor.datetime", autospec=True)
+    @mock.patch("dht20_sensor.sensor.datetime", autospec=True)
     def test_sets_timestamp_to_utc_now(self, datetime_mock, smbus_mock):
         now = datetime.utcnow()
         datetime_mock.utcnow = mock.Mock(return_value=now)
