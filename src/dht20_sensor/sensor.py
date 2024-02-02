@@ -30,13 +30,14 @@ class InitialisationError(Exception):
 
 
 class DHT20Sensor:
-    def __init__(self, address=0x38):
+    def __init__(self, address=0x38, i2c_bus=1):
         self.address = address
+        self.i2c_bus = i2c_bus
 
         # Wait for sensor to stabilise and reach idle state
         time.sleep(0.2)
 
-        with SMBus(1) as bus:
+        with SMBus(self.i2c_bus) as bus:
             status_byte = bus.read_i2c_block_data(self.address, 0x71, 1)
 
         if status_byte[0] & 0x18 != 0x18:
@@ -45,7 +46,7 @@ class DHT20Sensor:
         time.sleep(0.2)
 
     def read(self) -> Tuple[TemperatureReading, RelativeHumidityReading]:
-        with SMBus(1) as bus:
+        with SMBus(self.i2c_bus) as bus:
             bus.write_i2c_block_data(self.address, 0xAC, [0x33, 0x00])
             time.sleep(0.1)
             data = bus.read_i2c_block_data(self.address, 0x71, 7)
